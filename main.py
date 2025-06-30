@@ -4,6 +4,8 @@ import shutil
 import os
 import threading
 import importlib.util
+import subprocess
+import sys
 
 # Import query_rag from query_data.py
 def import_query_rag():
@@ -13,10 +15,9 @@ def import_query_rag():
     return module.query_rag
 
 # Run populate_database.py as a script
+# This version works even if there is no main() function, by calling the file as a script
 def run_populate_database():
-    spec = importlib.util.spec_from_file_location("populate_database", "populate_database.py")
-    module = importlib.util.module_from_spec(spec)
-    module.main()
+    subprocess.run([sys.executable, 'populate_database.py'])
 
 DATA_DIR = "data"
 
