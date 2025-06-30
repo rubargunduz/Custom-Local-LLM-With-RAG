@@ -1,4 +1,7 @@
-*.pyc
-.DS_Store
-backup
-chroma
+__pycache__/*
+
+data/*
+
+chroma/
+
+
